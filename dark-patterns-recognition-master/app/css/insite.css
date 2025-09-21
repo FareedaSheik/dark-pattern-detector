@@ -1,0 +1,91 @@
+/* --- This is your original code, ENHANCED for high visibility --- */
+
+.insite-highlight {
+  /* --- ENHANCEMENT 1: Add a "glow" and a defined border --- */
+  background-color: #d80a3e; /* Your original highlight color */
+  border: 1px solid #eb0c0c; /* A slightly darker border for definition */
+  border-radius: 4px; /* Soft, rounded corners */
+  padding: 2px 4px; /* A little space so the highlight isn't touching the text */
+  box-shadow: 0 0 8px rgba(247, 230, 96, 0.7); /* A soft yellow "glow" */
+
+  /* --- ENHANCEMENT 2: Make it wrap tightly and add a help cursor --- */
+  display: inline-block; /* Crucial for making the padding and border look right */
+  cursor: help; /* Changes the mouse cursor to a question mark on hover */
+
+  position: relative; /* Your original code - correct! */
+}
+
+/* --- ENHANCEMENT 3: Add an impossible-to-miss warning icon --- */
+.insite-highlight::before {
+  content: "⚠️"; /* The warning emoji */
+  margin-right: 6px; /* Space between the icon and the text */
+  font-size: 14px; /* Control the icon size */
+}
+
+/* --- Your original tooltip code is great, we'll just add a pointer arrow --- */
+.insite-highlight .insite-highlight-body {
+  font-size: 12px;
+  font-weight: 150;
+  margin: 0;
+  width: 200px;
+  color: #ffffff;
+  background-color: #041f30;
+  border-radius: 6px; /* Added for a more modern look */
+
+  position: absolute;
+  z-index: 99999; /* Increased z-index to be safe */
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* --- ENHANCEMENT 4: Add the little triangle arrow to the tooltip --- */
+.insite-highlight .insite-highlight-body::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Position at the bottom of the tooltip */
+  left: 50%;
+  margin-left: -6px; /* Center the arrow */
+  border-width: 6px;
+  border-style: solid;
+  border-color: #041f30 transparent transparent transparent; /* Pointing down */
+}
+
+/* Your original header and content styles are perfect */
+.insite-highlight-body .modal-header {
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 3px 2px -1px #00131f;
+  background-color: #05283d;
+  padding: 3px;
+  border-top-left-radius: 6px; /* Match the body radius */
+  border-top-right-radius: 6px;
+}
+
+.insite-highlight-body .modal-header h1 {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.insite-highlight-body .modal-content {
+  padding: 8px 16px 8px 16px;
+  font-size: 12px;
+  font-weight: 150;
+  color: #d8d8d8;
+}
+
+/* Your original hover effect is perfect */
+.insite-highlight:hover .insite-highlight-body {
+  visibility: visible;
+  opacity: 1;
+}
+
+.action-item.info-risk {
+    border-left-color: #3B82F6; /* A neutral blue color */
+}

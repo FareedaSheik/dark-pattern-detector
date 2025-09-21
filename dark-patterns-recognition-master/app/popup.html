@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
+    />
+    <link rel="stylesheet" href="css/popup.css" type="text/css" />
+
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    
+    <script src="js/gamification.js"></script>
+    <script src="js/popup.js"></script>
+  </head>
+
+  <body>
+    <div class="modal-header">
+      <h1>insite.</h1>
+    </div>
+    <div class="modal-content">
+      <div class="score-container">
+        <div class="circular-progress" id="transparencyScore">
+          <div class="progress-circle">
+            <div class="progress-value">n/a</div>
+          </div>
+        </div>
+        <div class="score-info">
+          <p class="score-label">Transparency Score</p>
+          <p class="risk-level" id="riskLevel">Not Analyzed</p>
+        </div>
+      </div>
+
+      <!-- Gamification Section -->
+      <div
+        class="gamification-section"
+        id="gamificationSection"
+        style="display: none"
+      >
+        <div class="level-display">
+          <div class="level-info">
+            <span class="level-label">Level</span>
+            <span class="level-number" id="currentLevel">1</span>
+          </div>
+          <div class="experience-bar">
+            <div class="experience-fill" id="experienceFill"></div>
+            <span class="experience-text" id="experienceText">0 / 100 XP</span>
+          </div>
+        </div>
+
+        <div class="points-display">
+          <span class="points-icon">⭐</span>
+          <span class="points-value" id="currentPoints">0</span>
+          <span class="points-label">Points</span>
+        </div>
+
+        <div
+          class="achievements-preview"
+          id="achievementsPreview"
+          style="display: none"
+        >
+          <div
+            class="achievement-notification"
+            id="achievementNotification"
+            style="display: none"
+          >
+            <span class="achievement-icon">🏆</span>
+            <span class="achievement-text" id="achievementText"
+              >Achievement Unlocked!</span
+            >
+          </div>
+          <div class="recent-achievements" id="recentAchievements"></div>
+        </div>
+      </div>
+
+      <div class="container">
+        <p class="label">dark patterns detected</p>
+        <p class="number">n/a</p>
+      </div>
+
+      <div
+        class="pattern-breakdown"
+        id="patternBreakdown"
+        style="display: none"
+      >
+        <p class="breakdown-title">Pattern Breakdown:</p>
+        <div class="pattern-list" id="patternList"></div>
+      </div>
+
+      <div
+        class="suggested-actions"
+        id="suggestedActions"
+        style="display: none"
+      >
+        <p class="actions-title">Suggested Actions:</p>
+        <div class="actions-list" id="actionsList"></div>
+      </div>
+
+      <div class="button-group">
+        <button class="analyze-button" type="button">ANALYZE SITE</button>
+        <button
+          class="screenshot-button"
+          type="button"
+          id="screenshotBtn"
+          style="display: none"
+        >
+          CAPTURE SCREENSHOT
+        </button>
+      </div>
+
+      <!-- Statistics Section -->
+      <div class="stats-section" id="statsSection" style="display: none">
+        <p class="stats-title">Your Impact</p>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number" id="sitesAnalyzed">0</span>
+            <span class="stat-label">Unique Sites</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="patternsFound">0</span>
+            <span class="stat-label">Patterns Found</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="streakDays">0</span>
+            <span class="stat-label">Day Streak</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" id="achievementsUnlocked">0</span>
+            <span class="stat-label">Achievements</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="link" href="https://darkpatterns.org"
+        >What are dark patterns?</a
+      >
+    </div>
+  </body>
+</html>
