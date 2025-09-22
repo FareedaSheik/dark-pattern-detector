@@ -1,32 +1,106 @@
-# Dark Patterns Recognition (Insite)
-[Overall Winner of TeenHacks LI Fall 2019](https://devpost.com/software/insite-qfpjcd)
+# Dark Pattern Detector
 
-Insite is a Chrome extension that detects and highlights dark patterns on shopping websites. It reads text on product pages of shopping websites, then identifies and classifies dark pattern text. These potential dark patterns are then highlighted, with a popup that identifies and explains the category that a given dark pattern belongs to. 
+A tool to detect **dark patterns** in web interfaces, helping promote ethical user experience by identifying manipulative design elements.
 
-This project would have been completely impossible without the paper *Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites* (Mathur et al.). We are especially grateful for their dataset of dark pattern strings that was used to train our classifier, and their page segmentation algorithm, which broke down webpages into meaningful blocks of text. Most importantly, the work that they did informed us of the existence of these dark patterns and helped us become more aware of the online landscape, especially when shopping.
+---
+
+## Table of Contents
+
+- [What is a Dark Pattern](#what-is-a-dark-pattern)  
+- [Problem Statement](#problem-statement)  
+- [Features](#features)  
+- [How It Works / Architecture](#how-it-works--architecture)  
+- [Getting Started](#getting-started)  
+- [Usage](#usage)  
+- [Dataset / Examples](#dataset--examples)  
+- [Evaluation / Results](#evaluation--results)  
+- [Limitations](#limitations)  
+- [Future Work](#future-work)  
+- [Contributing](#contributing)  
+- [License](#license)  
+
+---
+
+## What is a Dark Pattern
+
+“Dark patterns” are user interface designs crafted to trick or manipulate users into doing things they might not otherwise want to do — for example, making it hard to opt-out, hiding critical information, or using default settings that benefit the service provider at the user’s expense.
+
+---
+
+## Problem Statement
+
+Many websites use dark patterns, often in subtle ways, that degrade user trust and autonomy. The goal of this project is to build an automated detector that:
+
+- scans a web page (or UI component)
+- identifies presence (and type) of dark patterns
+- gives explainability of what pattern was found and where
+
+---
+
+## Features
+
+- Detects multiple types of dark patterns (e.g., **forced continuity**, **confirmshame**, **sneak-into-basket**, etc.)  
+- Processes HTML / CSS / JS of a page snapshot  
+- Visualizes the part of UI where dark pattern is present  
+- Provides a confidence score or severity metric  
+- Supports a web-interface / API to upload  screenshots  
+
+---
+
+## How It Works / Architecture
+
+Include architecture diagram / flow. Here’s a rough sketch:
+
+1. **Input**: A URL / screenshot / HTML snapshot  
+2. **Preprocessing**: Parse DOM, extract UI elements, CSS, detect layout, visible text  
+3. **Feature Extraction**: Identify features relevant to dark patterns, such as misleading buttons, hidden opt-outs, default-on toggles, etc.  
+4. **Model / Rules**: Use a combination of rule-based detection + machine learning (if applicable)  
+5. **Output**: List of detected dark pattern instances, locations, and explanations  
+
+Technologies used:
+
+- JavaScript / Python / etc.  
+- Libraries / frameworks: e.g., **Beautiful Soup**, **Selenium**, **Puppeteer**, **Scikit-Learn**, **TensorFlow / PyTorch** etc.  
+- Data formats: HTML, DOM, maybe image processing  
+
+---
+
+## Getting Started
+
+### Requirements
+
+- Python version Y  
+- Any other dependencies (libraries, browser driver etc.)  
+
+### Installation
+
+```bash
+git clone https://github.com/FareedaSheik/dark-pattern-detector.git
+cd dark-patterns-recognition-master\dark-patterns-recognition-master\api
+python app.py
+
+## Running as a Chrome Extension
+
+This project includes an `app/` folder which contains the Chrome Extension setup. Follow the steps below to load and run it in your browser:
+
+1. Open **Google Chrome**.
+2. Go to **Extensions** by entering the following in the address bar:
+3. In the top-right corner, **enable Developer Mode**.
+4. Click on **Load unpacked**.
+5. Select the `app/` folder from this repository.
+6. The extension will now appear in your Chrome toolbar.
+
+### Usage
+- Navigate to any website you want to test.  
+- Click on the **Dark Pattern Detector** extension icon in the toolbar.  
+- The extension will scan the current page and display results (patterns detected, explanations, etc.).
+
+---
+
+### Notes
+- Make sure you have cloned this repository before loading:
+```bash
+git clone https://github.com/FareedaSheik/dark-pattern-detector.git
+cd dark-pattern-detector
 
 
-<p align="center">
-    <img src="https://raw.githubusercontent.com/NicholasTung/dark-patterns-recognition/master/after.png" alt="logo" width=600 >
-</p>
-<p align = "center">
-    Store page with identified dark patterns highlighted in yellow
-</p>
-
-## Dark Patterns?
-Dark patterns are design tricks used to influence the way users interact with software. While some dark patterns are harmless, like emphasizing signup buttons with color, others can be more malicious in problematic. In the context of online stores, dark patterns can be used to nudge buyers into buying items they might not need. For further information on dark patterns, check out [this website](https://darkpatterns.org). Created by the man who coined the term ‘dark patterns,’ the site will teach you how to recognize the different kinds of dark patterns you may encounter.
-## Tech Stack
-The Chrome Extension front-end that scrapes the active web page is written in Javascript. For the back-end, a Python server running Flask interfaces Bernoulli Naive Bayes models to classify tokens of text sent to it. To train these algorithms, datasets from Princeton University researchers along with manually annotated datasets were used.
-## Installation
-To begin installation, first clone this repository, or download and unzip it.
-
-Install and run the Flask app backend by navigating to `api`, installing required libraries, and running `app.py` with Python
-
-Install the Chrome extension:
-1. Navigate to chrome://extensions
-2. Enable "Developer mode" by toggling the switch at the top right of the page
-3. Click the "Load unpacked" button.
-4. Navigate to the repository directory, and select the folder `app` for installation
-5. Ensure that the extension is enabled, and if so, the extension has been successfully installed!
-## Reference
-Mathur, A., Acar, G., Friedman, M. J., Lucherini, E., Mayer, J., Chetty, M., & Narayanan, A. (2019). Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites. Proceedings of the ACM on Human-Computer Interaction, 3(CSCW), 81.
